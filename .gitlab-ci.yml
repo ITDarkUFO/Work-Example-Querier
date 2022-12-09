@@ -1,0 +1,51 @@
+image: gitlab_url.com:4567/folder/library/docker:latest
+
+services:
+  - gitlab_url.com:4567/folder/library/docker:dind
+  - gitlab_url.com:4567/folder/library/python:3.8
+
+variables:
+  TAG_LATEST: $CI_REGISTRY_IMAGE:latest
+  TAG_COMMIT: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - docker info
+
+build-job:
+  only:
+    - master
+
+  before_script:
+    - docker login gitlab_url.com:4567 -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+  script:
+    - docker build -f Dockerfile -t $TAG_COMMIT -t $TAG_LATEST .
+    - docker push $TAG_COMMIT
+    - docker push $TAG_LATEST
+
+  stage: build
+  tags:
+    - docker
+
+deploy_prod_server:
+  image: gitlab_url.com:4567/folder/library/ubuntu:22.04
+  stage: deploy
+  tags:
+    - deployment
+  before_script:
+    - mkdir -p ~/.ssh
+    - cp "$ID_RSA" ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+  script:
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP_DEV_DEMO "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY"
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP_DEV_DEMO "docker pull $TAG_COMMIT"
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP_DEV_DEMO "docker container rm -f $CI_PROJECT_NAME || true"
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP_DEV_DEMO "docker run -d -p 1014:8000 --name $CI_PROJECT_NAME $TAG_COMMIT"
+  only:
+    - master

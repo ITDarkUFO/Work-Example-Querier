@@ -1,0 +1,46 @@
+{
+    "columns": [
+        {
+            "value": "Номер",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Название",
+            "parameters": {
+                "width": "20"
+            }
+        },
+        {
+            "value": "Описание",
+            "parameters": {
+                "width": "40"
+            }
+        },
+        {
+            "value": "Дата создания",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Срок исполнения",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Инициатор",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Контролер",
+            "parameters": {
+                "width": "10"
+            }
+        }
+    ]
+}

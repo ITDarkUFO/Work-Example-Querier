@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  db:
+    container_name: hangfire_db
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: local_db
+      POSTGRES_USER: local_db_user
+      POSTGRES_PASSWORD: local_db_pass
+    ports:
+      - 5433:5432
+
+  core:
+    container_name: core
+    depends_on:
+      - db
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000

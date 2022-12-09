@@ -1,0 +1,29 @@
+{% load static %}
+{% load templates %}
+<span class="title fs-1 fw-lighter">Список резолюций по организации</span>
+
+<div>
+    <span class="text-secondary"><em>Не вводите слишком большие промежутки времени воизбежание вылета
+            страницы.</em></span>
+</div>
+
+<form id="formInput" class="mt-3" action="#" onsubmit="return false">
+    <div class="row align-items-end mt-3">
+        <div class="col-md-4">
+            <label for="assignment_number" class="col-form-label">Название организации</label>
+            <input required data-validate type="search" id="organization_name" class="form-control">
+        </div>
+        <div class="col">
+            <label for="date_start" class="col-form-label">Дата начала</label>
+            <input required data-validate type="date" id="date_start" class="form-control" max="9999-12-31">
+        </div>
+        <div class="col">
+            <label for="date_end" class="col-form-label">Дата конца</label>
+            <input required data-validate type="date" id="date_end" class="form-control" max="9999-12-31">
+        </div>
+        {% autoescape off %}
+        {% form_buttons %}
+        {% endautoescape %}
+    </div>
+</form>
+<span id="results-counter" class="mt-3 d-block text-secondary text-end"></span>

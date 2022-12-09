@@ -1,0 +1,29 @@
+{% load static %}
+{% load templates %}
+<span class="title fs-1 fw-lighter">Список просроченных поручений</span>
+
+<form id="formInput" class="mt-3" action="#" onsubmit="return false">
+    <div class="row align-items-end mt-3">
+        <div class="col-3">
+            <label for="date_start" class="col-form-label">Исполнитель</label>
+            <select required data-validate id="executor_input" class="form-select">
+                <option value="" disabled selected hidden>Выберите исполнителя</option>
+                {% for executor in executors %}
+                <option value="{{ executor.person.uuid }}">{{ executor }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col">
+            <label for="date_start" class="col-form-label">Дата начала</label>
+            <input required data-validate type="date" id="date_start" class="form-control" max="9999-12-31">
+        </div>
+        <div class="col">
+            <label for="date_end" class="col-form-label">Дата конца</label>
+            <input required data-validate type="date" id="date_end" class="form-control" max="9999-12-31">
+        </div>
+        {% autoescape off %}
+        {% form_buttons %}
+        {% endautoescape %}
+    </div>
+</form>
+<span id="results-counter" class="d-block text-secondary text-end mt-3"></span>

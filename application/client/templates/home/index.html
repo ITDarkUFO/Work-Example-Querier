@@ -1,0 +1,199 @@
+{% load static %}
+{% load templates %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% autoescape off %}
+    {% meta %}
+    {% endautoescape %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xxl bg-light sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand">Генератор отчетов</span>
+
+            <!-- Меню для широких экранов -->
+            <div class="wide-menu collapse navbar-collapse justify-content-between">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Отчеты по пользователям
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="openPage('last_authorization')" class="dropdown-item" aria-current="page"
+                                    href="#">По
+                                    дате последнего входа</a></li>
+                            <li>
+                                <hr class="divider">
+                            </li>
+                            <li><a onclick="openPage('not_done_assignments')" class="dropdown-item" aria-current="page"
+                                    href="#">Список невыполненных поручений</a></li>
+                            <li><a onclick="openPage('overdue_assignments')" class="dropdown-item" aria-current="page"
+                                    href="#">Список просроченных поручений</a></li>
+                            <li>
+                                <hr class="divider">
+                            </li>
+                            <li><a onclick="openPage('kid')" class="dropdown-item" aria-current="page" href="#">КИД</a>
+                            </li>
+                            <li><a onclick="openPage('kid_full')" class="dropdown-item" aria-current="page" href="#">КИД
+                                    Детализированный</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Отчеты по организациям
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="openPage('org_types')" class="dropdown-item" aria-current="page" href="#">По
+                                    типам
+                                    организаций</a></li>
+                            <li><a onclick="openPage('org_types_count')" class="dropdown-item" aria-current="page"
+                                    href="#">По количеству
+                                    организаций в типах</a></li>
+                            <li>
+                                <hr class="divider">
+                            </li>
+                            <li><a onclick="openPage('out_docs')" class="dropdown-item" aria-current="page"
+                                    href="#">Отчет по документам организации</a></li>
+                            <li><a onclick="openPage('resolutions_timer')" class="dropdown-item" aria-current="page"
+                                    href="#">Время прохождения документов</a></li>
+                            <li><a onclick="openPage('unregistered_documents')" class="dropdown-item"
+                                    aria-current="page" href="#">Список незарегистрированных документов</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/docs">Документация</a>
+                    </li>
+                    <li class="nav-item d-none" id="nt-btn-menu-divider">
+                        <span class="nav-link">|</span>
+                    </li>
+                    <li class="nav-item d-none" id="nt-btn-menu">
+                        <a class="nav-link" href="#" target="_blank">Открыть в новой вкладке</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Меню для узких экранов -->
+            <div class="narrow-menu">
+                <button id="" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Отчеты по пользователям
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a onclick="openPage('last_authorization')" class="dropdown-item"
+                                            aria-current="page" data-bs-dismiss="offcanvas" href="#">По
+                                            дате последнего входа</a></li>
+                                    <li>
+                                        <hr class="divider">
+                                    </li>
+                                    <li><a onclick="openPage('not_done_assignments')" class="dropdown-item"
+                                            aria-current="page" data-bs-dismiss="offcanvas" href="#">Список
+                                            невыполненных поручений</a>
+                                    </li>
+                                    <li><a onclick="openPage('overdue_assignments')" class="dropdown-item"
+                                            aria-current="page" data-bs-dismiss="offcanvas" href="#">Список
+                                            просроченных поручений</a>
+                                    </li>
+                                    <li>
+                                        <hr class="divider">
+                                    </li>
+                                    <li><a onclick="openPage('kid')" class="dropdown-item" aria-current="page"
+                                            data-bs-dismiss="offcanvas" href="#">КИД</a>
+                                    </li>
+                                    <li><a onclick="openPage('kid_full')" class="dropdown-item" aria-current="page"
+                                            data-bs-dismiss="offcanvas" href="#">КИД
+                                            Детализированный</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Отчеты по организациям
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a onclick="openPage('org_types')" class="dropdown-item" aria-current="page"
+                                            data-bs-dismiss="offcanvas" href="#">По
+                                            типам
+                                            организаций</a></li>
+                                    <li><a onclick="openPage('org_types_count')" class="dropdown-item"
+                                            aria-current="page" data-bs-dismiss="offcanvas" href="#">По количеству
+                                            организаций в типах</a></li>
+                                    <li>
+                                        <hr class="divider">
+                                    </li>
+                                    <li><a onclick="openPage('out_docs')" class="dropdown-item" aria-current="page"
+                                            data-bs-dismiss="offcanvas" href="#">Отчет по документам организации</a>
+                                    </li>
+                                    <li><a onclick="openPage('resolutions_timer')" class="dropdown-item"
+                                            aria-current="page" data-bs-dismiss="offcanvas" href="#">Время прохождения
+                                            документов</a></li>
+                                    <li><a onclick="openPage('unregistered_documents')" class="dropdown-item"
+                                            aria-current="page" data-bs-dismiss="offcanvas" href="#">Список
+                                            незарегистрированных документов</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <hr class="divider">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs">Документация</a>
+                            </li>
+                            <li class="nav-item d-none" id="nt-btn-submenu">
+                                <a class="nav-link" href="#" target="_blank">Открыть в новой вкладке</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="container-lg mt-4">
+        <div id="form-wrapper">
+            <div class="container-lg d-flex position-absolute top-50 start-50 translate-middle justify-content-center">
+                <span class="text-center text-break fs-1 fw-lighter">Для продолжения выберите выше тип отчета</span>
+            </div>
+        </div>
+
+        <div id="table-wrapper">
+            <table id="table" class="table table-hover table-bordered">
+                <thead id="table-head" style="background-color: white;"></thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="alerts-wrapper" class="container-lg"></div>
+
+    <script type="text/javascript">
+        (function (d, t, p) {
+            var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+            j.src = ("https:" == p ? "https:" : "http:") + "//stat.sputnik.ru/cnt.js";
+            var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+        })(document, "script", document.location.protocol);
+    </script>
+    {% autoescape off %}
+    {% libs %}
+    {% endautoescape %}
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{
+    "columns": [
+        {
+            "value": "Исполнитель",
+            "parameters": {
+                "width": "50"
+            }
+        },
+        {
+            "value": "Поручения",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Выполненные в срок",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Выполнено с нарушением срока",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Не исполнено/Не стоит срок факт. исполнения",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "КИД",
+            "parameters": {
+                "width": "10"
+            }
+        }
+    ]
+}

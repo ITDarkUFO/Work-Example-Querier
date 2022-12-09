@@ -1,0 +1,16 @@
+{
+    "columns": [
+        {
+            "value": "Тип организации",
+            "parameters": {
+                "width": "80"
+            }
+        },
+        {
+            "value": "Количество",
+            "parameters": {
+                "width": "20"
+            }
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "columns": [
+        {
+            "value": "UUID",
+            "parameters": {
+                "width": "15"
+            }
+        },
+        {
+            "value": "Регистрационный номер",
+            "parameters": {
+                "width": "15"
+            }
+        },
+        {
+            "value": "Дата поступления",
+            "parameters": {
+                "width": "20"
+            }
+        },
+        {
+            "value": "Тема документа",
+            "parameters": {
+                "width": "20"
+            }
+        },
+        {
+            "value": "Содержание документа",
+            "parameters": {
+                "width": "20"
+            }
+        }
+    ]
+}

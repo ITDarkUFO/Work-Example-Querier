@@ -1,0 +1,37 @@
+{% load static %}
+{% load templates %}
+<span class="title fs-1 fw-lighter">Данные по организации</span>
+
+<div>
+    <span class="text-secondary"><em>Не вводите слишком большие промежутки времени воизбежание вылета
+            страницы.</em></span>
+</div>
+
+<form id="formInput" class="mt-3" action="#" onsubmit="return false">
+    <div class="row align-items-end mt-3">
+        <div class="col">
+            <label for="assignment_number" class="col-form-label">Название организации</label>
+            <input required data-validate type="search" id="organization_name" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <label for="doc_type" class="col-form-label">Тип документа</label>
+            <select required data-validate id="doc_type" class="form-select">
+                <option value="" disabled selected hidden>Выберите тип документа</option>
+                <option value="830a2b7d-3aa1-a01f-554d-cad3a6e16a1e">Входящий</option>
+                <option value="208fc587-2098-595d-09ec-7c1cba4ae9c1">Исходящий</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="date_start" class="col-form-label">Дата начала</label>
+            <input required data-validate type="date" id="date_start" class="form-control" max="9999-12-31">
+        </div>
+        <div class="col-md-2">
+            <label for="date_end" class="col-form-label">Дата конца</label>
+            <input required data-validate type="date" id="date_end" class="form-control" max="9999-12-31">
+        </div>
+        {% autoescape off %}
+        {% form_buttons %}
+        {% endautoescape %}
+    </div>
+</form>
+<span id="results-counter" class="mt-3 d-block text-secondary text-end"></span>

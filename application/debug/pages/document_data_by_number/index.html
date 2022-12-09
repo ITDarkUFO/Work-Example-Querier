@@ -1,0 +1,19 @@
+{% load static %}
+{% load templates %}
+<span class="title fs-1 fw-lighter">Данные по номеру документа</span>
+
+<form id="formInput" class="mt-3" action="#" onsubmit="return false">
+    <div class="row align-items-end mt-3">
+        <div class="col-md-4">
+            <label for="assignment_number" class="col-form-label">Регистрационный номер</label>
+            <div class="input-group">
+                <div class="input-group-text">№</div>
+                <input required data-validate type="search" id="document_number" class="form-control">
+            </div>
+        </div>
+        {% autoescape off %}
+        {% form_buttons %}
+        {% endautoescape %}
+    </div>
+</form>
+<span id="results-counter" class="mt-3 d-block text-secondary text-end"></span>

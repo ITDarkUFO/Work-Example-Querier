@@ -1,0 +1,40 @@
+{
+    "columns": [
+        {
+            "value": "UUID",
+            "parameters": {
+                "width": "15"
+            }
+        },
+        {
+            "value": "Регистрационный номер",
+            "parameters": {
+                "width": "15"
+            }
+        },
+        {
+            "value": "Тема документа",
+            "parameters": {
+                "width": "25"
+            }
+        },
+        {
+            "value": "Дата создания",
+            "parameters": {
+                "width": "15"
+            }
+        },
+        {
+            "value": "Дата выполнения",
+            "parameters": {
+                "width": "15"
+            }
+        },
+        {
+            "value": "Время прохождения",
+            "parameters": {
+                "width": "15"
+            }
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{% load static %}
+{% load templates %}
+<span class="title fs-1 fw-lighter">Дата последнего входа пользователя</span>
+
+<form id="formInput" class="mt-3" action="#" onsubmit="return false">
+    <div class="row align-items-end mt-3">
+        <div class="col">
+            <label for="time_interval" class="col-form-label">Дата последнего входа</label>
+            <select required data-validate id="time_interval" class="form-select">
+                <option value="" disabled selected hidden>Выберите значение</option>
+                <option value="0 DAY">сегодня и раньше</option>
+                <option value="1 DAY">больше 1 дня</option>
+                <option value="7 DAY">больше 1 недели</option>
+                <option value="14 DAY">больше 2 недель</option>
+                <option value="1 MONTH">больше 1 месяца</option>
+                <option value="2 MONTH">больше 2 месяцев</option>
+                <option value="3 MONTH">больше 3 месяцев</option>
+                <option value="6 MONTH">больше 6 месяцев</option>
+                <option value="2 YEAR">больше 1 года</option>
+            </select>
+        </div>
+        {% autoescape off %}
+        {% form_buttons %}
+        {% endautoescape %}
+    </div>
+</form>
+<span id="results-counter" class="d-block text-secondary text-end mt-3"></span>

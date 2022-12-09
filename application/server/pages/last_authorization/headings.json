@@ -1,0 +1,28 @@
+{
+    "columns": [
+        {
+            "value": "Имя пользователя",
+            "parameters": {
+                "width": "20"
+            }
+        },
+        {
+            "value": "Организация",
+            "parameters": {
+                "width": "20"
+            }
+        },
+        {
+            "value": "Должность",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Время последнего входа",
+            "parameters": {
+                "width": "10"
+            }
+        }
+    ]
+}

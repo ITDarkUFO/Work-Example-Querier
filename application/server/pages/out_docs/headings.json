@@ -1,0 +1,34 @@
+{
+    "columns": [
+        {
+            "value": "Организация",
+            "parameters": {
+                "width": "80"
+            }
+        },
+        {
+            "value": "Входящие",
+            "parameters": {
+                "width": "5"
+            }
+        },
+        {
+            "value": "Исходящие",
+            "parameters": {
+                "width": "5"
+            }
+        },
+        {
+            "value": "Подписанные",
+            "parameters": {
+                "width": "5"
+            }
+        },
+        {
+            "value": "Процент подписанных",
+            "parameters": {
+                "width": "5"
+            }
+        }
+    ]
+}

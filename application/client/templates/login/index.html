@@ -1,0 +1,51 @@
+{% load static %}
+{% load templates %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% autoescape off %}
+    {% meta %}
+    {% endautoescape %}
+</head>
+
+<body class="bg-light">
+    <div id="page-wrapper" class="d-flex position-absolute top-50 start-50 translate-middle justify-content-center">
+        {% if next %}
+        <form id="formInput" method="post" action="{% url 'login' %}?next={{ next }}" class="login-form p-3 border rounded bg-white">
+        {% else %}
+        <form id="formInput" method="post" action="{% url 'login' %}" class="login-form p-3 border rounded bg-white">
+        {% endif %}
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <span class="title fs-2 fw-light">Генератор отчетов</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="username" class="form-label">Логин</label>
+                    <input required data-validate type="text" id="username" name="username" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input required data-validate type="password" id="password" name="password" class="form-control">
+                </div>
+                <div class="col-md-6 mt-2 mb-3">
+                    <input class="form-check-input" type="checkbox" id="remember-me" name="remember-me">
+                    <label class="form-check-label" for="remember-me">Запомнить меня</label>
+                </div>
+                <div class="col-12 mt-2">
+                    <button onclick="" class="form-control">Войти</button>
+                </div>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </form>
+    </div>
+
+    <div id="alerts-wrapper" class="container-lg"></div>
+
+    {% autoescape off %}
+    {% libs %}
+    {% endautoescape %}
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{% load static %}
+{% load templates %}
+<form id="formInput" action="#" onsubmit="return false">
+    <div class="row align-items-end">
+        <span class="title col fs-1 fw-lighter">Отчет по количеству организаций в типе</span>
+        {% autoescape off %}
+        {% form_buttons %}
+        {% endautoescape %}
+    </div>
+</form>

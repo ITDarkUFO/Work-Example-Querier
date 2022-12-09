@@ -1,0 +1,40 @@
+{
+    "columns": [
+        {
+            "value": "UUID",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Тема документа",
+            "parameters": {
+                "width": "20"
+            }
+        },
+        {
+            "value": "Дата создания",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Дата выполнения",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Время прохождения",
+            "parameters": {
+                "width": "10"
+            }
+        },
+        {
+            "value": "Организация",
+            "parameters": {
+                "width": "10"
+            }
+        }
+    ]
+}

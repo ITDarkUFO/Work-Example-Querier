@@ -1,0 +1,33 @@
+{% load static %}
+{% load templates %}
+<span class="title fs-1 fw-lighter">Список незарегистрированных документов</span>
+
+<form id="formInput" class="mt-3" action="#" onsubmit="return false">
+    <div class="row align-items-end">
+        <div class="col">
+            <label for="date_start" class="col-form-label">Дата начала</label>
+            <input required data-validate type="date" id="date_start" class="form-control" max="9999-12-31">
+        </div>
+        <div class="col">
+            <label for="date_end" class="col-form-label">Дата конца</label>
+            <input required data-validate type="date" id="date_end" class="form-control" max="9999-12-31">
+        </div>
+        <div class="col">
+            <label for="register_interval" class="col-form-label">Время отсутствия регистрации</label>
+            <select required data-validate id="register_interval" class="form-select">
+                <option value="" disabled selected hidden>Выберите значение</option>
+                <option value="1 DAY">1 день</option>
+                <option value="7 DAY">1 неделя</option>
+                <option value="14 DAY">2 недели</option>
+                <option value="1 MONTH">1 месяц</option>
+                <option value="2 MONTH">2 месяца</option>
+                <option value="3 MONTH">3 месяца</option>
+                <option value="6 MONTH">6 месяцев</option>
+                <option value="2 YEAR">1 год</option>
+            </select>
+        </div>
+        {% autoescape off %}
+        {% form_buttons %}
+        {% endautoescape %}
+    </div>
+</form>
